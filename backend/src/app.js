@@ -2,11 +2,15 @@ import cors from 'cors';
 import express from 'express';
 import path from 'node:path';
 import swaggerUi from 'swagger-ui-express';
-import openapiDocument from './swagger/openapi.json' with { type: 'json' };
+import { createRequire } from 'node:module';
+
 import { env } from './config/env.js';
 import { apiRouter } from './routes/index.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
+
+const require = createRequire(import.meta.url);
+const openapiDocument = require('./swagger/openapi.json');
 
 export const app = express();
 
