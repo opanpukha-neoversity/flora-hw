@@ -13,28 +13,48 @@
   "tags": [
     {
       "name": "Bouquets"
+    },
+    {
+      "name": "Orders"
+    },
+    {
+      "name": "Feedbacks"
+    },
+    {
+      "name": "Static"
     }
   ],
   "paths": {
     "/bouquets": {
       "get": {
-        "tags": ["Bouquets"],
+        "tags": [
+          "Bouquets"
+        ],
         "summary": "Get all bouquets",
         "parameters": [
           {
             "name": "_page",
             "in": "query",
-            "schema": { "type": "integer", "minimum": 1 }
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
           },
           {
             "name": "_limit",
             "in": "query",
-            "schema": { "type": "integer", "minimum": 1, "maximum": 100 }
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            }
           },
           {
             "name": "category",
             "in": "query",
-            "schema": { "type": "string" }
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "responses": {
@@ -42,7 +62,9 @@
             "description": "Bouquet list",
             "headers": {
               "X-Total-Count": {
-                "schema": { "type": "integer" },
+                "schema": {
+                  "type": "integer"
+                },
                 "description": "Total number of bouquets matching the request"
               }
             },
@@ -50,7 +72,9 @@
               "application/json": {
                 "schema": {
                   "type": "array",
-                  "items": { "$ref": "#/components/schemas/Bouquet" }
+                  "items": {
+                    "$ref": "#/components/schemas/Bouquet"
+                  }
                 }
               }
             }
@@ -58,13 +82,17 @@
         }
       },
       "post": {
-        "tags": ["Bouquets"],
+        "tags": [
+          "Bouquets"
+        ],
         "summary": "Create bouquet",
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/BouquetCreate" }
+              "schema": {
+                "$ref": "#/components/schemas/BouquetCreate"
+              }
             }
           }
         },
@@ -73,40 +101,62 @@
             "description": "Bouquet created",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Bouquet" }
+                "schema": {
+                  "$ref": "#/components/schemas/Bouquet"
+                }
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" }
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          }
         }
       }
     },
     "/bouquets/{id}": {
       "get": {
-        "tags": ["Bouquets"],
+        "tags": [
+          "Bouquets"
+        ],
         "summary": "Get bouquet by id",
-        "parameters": [{ "$ref": "#/components/parameters/BouquetId" }],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/BouquetId"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Bouquet found",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Bouquet" }
+                "schema": {
+                  "$ref": "#/components/schemas/Bouquet"
+                }
               }
             }
           },
-          "404": { "$ref": "#/components/responses/NotFound" }
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
         }
       },
       "put": {
-        "tags": ["Bouquets"],
+        "tags": [
+          "Bouquets"
+        ],
         "summary": "Update bouquet fields",
-        "parameters": [{ "$ref": "#/components/parameters/BouquetId" }],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/BouquetId"
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/BouquetUpdate" }
+              "schema": {
+                "$ref": "#/components/schemas/BouquetUpdate"
+              }
             }
           }
         },
@@ -115,41 +165,65 @@
             "description": "Bouquet updated",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Bouquet" }
+                "schema": {
+                  "$ref": "#/components/schemas/Bouquet"
+                }
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "404": { "$ref": "#/components/responses/NotFound" }
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
         }
       },
       "delete": {
-        "tags": ["Bouquets"],
+        "tags": [
+          "Bouquets"
+        ],
         "summary": "Delete bouquet",
-        "parameters": [{ "$ref": "#/components/parameters/BouquetId" }],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/BouquetId"
+          }
+        ],
         "responses": {
           "200": {
             "description": "Bouquet deleted",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Bouquet" }
+                "schema": {
+                  "$ref": "#/components/schemas/Bouquet"
+                }
               }
             }
           },
-          "404": { "$ref": "#/components/responses/NotFound" }
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
         }
       }
     },
     "/bouquets/{id}/favorite": {
       "patch": {
-        "tags": ["Bouquets"],
+        "tags": [
+          "Bouquets"
+        ],
         "summary": "Update favorite status",
-        "parameters": [{ "$ref": "#/components/parameters/BouquetId" }],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/BouquetId"
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "application/json": {
-              "schema": { "$ref": "#/components/schemas/BouquetFavoriteUpdate" }
+              "schema": {
+                "$ref": "#/components/schemas/BouquetFavoriteUpdate"
+              }
             }
           }
         },
@@ -158,27 +232,41 @@
             "description": "Favorite status updated",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Bouquet" }
+                "schema": {
+                  "$ref": "#/components/schemas/Bouquet"
+                }
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "404": { "$ref": "#/components/responses/NotFound" }
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
         }
       }
     },
     "/bouquets/{id}/photo": {
       "patch": {
-        "tags": ["Bouquets"],
+        "tags": [
+          "Bouquets"
+        ],
         "summary": "Upload bouquet photo",
-        "parameters": [{ "$ref": "#/components/parameters/BouquetId" }],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/BouquetId"
+          }
+        ],
         "requestBody": {
           "required": true,
           "content": {
             "multipart/form-data": {
               "schema": {
                 "type": "object",
-                "required": ["photo"],
+                "required": [
+                  "photo"
+                ],
                 "properties": {
                   "photo": {
                     "type": "string",
@@ -194,12 +282,177 @@
             "description": "Photo updated",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Bouquet" }
+                "schema": {
+                  "$ref": "#/components/schemas/Bouquet"
+                }
               }
             }
           },
-          "400": { "$ref": "#/components/responses/BadRequest" },
-          "404": { "$ref": "#/components/responses/NotFound" }
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/orders": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get all orders",
+        "responses": {
+          "200": {
+            "description": "Order list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Order"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Create order",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrderCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Order created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          }
+        }
+      }
+    },
+    "/orders/{id}": {
+      "get": {
+        "tags": [
+          "Orders"
+        ],
+        "summary": "Get order by id",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/EntityId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Order found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Order"
+                }
+              }
+            }
+          },
+          "404": {
+            "$ref": "#/components/responses/NotFound"
+          }
+        }
+      }
+    },
+    "/feedbacks": {
+      "get": {
+        "tags": [
+          "Feedbacks"
+        ],
+        "summary": "Get all feedbacks",
+        "responses": {
+          "200": {
+            "description": "Feedback list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Feedback"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Feedbacks"
+        ],
+        "summary": "Create feedback",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Feedback created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Feedback"
+                }
+              }
+            }
+          },
+          "400": {
+            "$ref": "#/components/responses/BadRequest"
+          }
+        }
+      }
+    },
+    "/bestsellers": {
+      "get": {
+        "tags": [
+          "Static"
+        ],
+        "summary": "Get bestseller bouquets",
+        "responses": {
+          "200": {
+            "description": "Bestseller bouquet list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Bouquet"
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -210,67 +463,314 @@
         "name": "id",
         "in": "path",
         "required": true,
-        "schema": { "type": "integer", "minimum": 1 }
+        "schema": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "EntityId": {
+        "name": "id",
+        "in": "path",
+        "required": true,
+        "schema": {
+          "type": "integer",
+          "minimum": 1
+        }
       }
     },
     "schemas": {
       "Bouquet": {
         "type": "object",
-        "required": ["id", "title", "description", "price", "favorite", "photoURL"],
+        "required": [
+          "id",
+          "title",
+          "description",
+          "price",
+          "favorite",
+          "photoURL"
+        ],
         "properties": {
-          "id": { "type": "integer", "example": 1 },
-          "title": { "type": "string", "example": "Peach Meadow" },
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "title": {
+            "type": "string",
+            "example": "Peach Meadow"
+          },
           "description": {
             "type": "string",
             "example": "A soft and radiant arrangement of peach and blush roses."
           },
-          "price": { "type": "number", "format": "float", "example": 55 },
-          "category": { "type": "string", "nullable": true, "example": "spring" },
-          "favorite": { "type": "boolean", "example": false },
+          "price": {
+            "type": "number",
+            "format": "float",
+            "example": 55
+          },
+          "category": {
+            "type": "string",
+            "nullable": true,
+            "example": "spring"
+          },
+          "favorite": {
+            "type": "boolean",
+            "example": false
+          },
           "photoURL": {
             "type": "string",
             "format": "uri",
             "example": "https://example.com/photos/peach-meadow.jpg"
           },
-          "createdAt": { "type": "string", "format": "date-time" },
-          "updatedAt": { "type": "string", "format": "date-time" }
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
         }
       },
       "BouquetCreate": {
         "type": "object",
-        "required": ["title", "description", "price"],
+        "required": [
+          "title",
+          "description",
+          "price"
+        ],
         "properties": {
-          "title": { "type": "string", "minLength": 2, "maxLength": 100 },
-          "description": { "type": "string", "minLength": 5, "maxLength": 1000 },
-          "price": { "type": "number", "format": "float", "minimum": 0 },
-          "category": { "type": "string", "nullable": true, "maxLength": 50 },
-          "favorite": { "type": "boolean" }
+          "title": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100
+          },
+          "description": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 1000
+          },
+          "price": {
+            "type": "number",
+            "format": "float",
+            "minimum": 0
+          },
+          "category": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 50
+          },
+          "favorite": {
+            "type": "boolean"
+          }
         }
       },
       "BouquetUpdate": {
         "type": "object",
         "minProperties": 1,
         "properties": {
-          "title": { "type": "string", "minLength": 2, "maxLength": 100 },
-          "description": { "type": "string", "minLength": 5, "maxLength": 1000 },
-          "price": { "type": "number", "format": "float", "minimum": 0 },
-          "category": { "type": "string", "nullable": true, "maxLength": 50 },
-          "favorite": { "type": "boolean" },
-          "photoURL": { "type": "string", "format": "uri" }
+          "title": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100
+          },
+          "description": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 1000
+          },
+          "price": {
+            "type": "number",
+            "format": "float",
+            "minimum": 0
+          },
+          "category": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 50
+          },
+          "favorite": {
+            "type": "boolean"
+          },
+          "photoURL": {
+            "type": "string",
+            "format": "uri"
+          }
         }
       },
       "BouquetFavoriteUpdate": {
         "type": "object",
-        "required": ["favorite"],
+        "required": [
+          "favorite"
+        ],
         "properties": {
-          "favorite": { "type": "boolean" }
+          "favorite": {
+            "type": "boolean"
+          }
         }
       },
       "Error": {
         "type": "object",
-        "required": ["message"],
+        "required": [
+          "message"
+        ],
         "properties": {
-          "message": { "type": "string", "example": "Not found" }
+          "message": {
+            "type": "string",
+            "example": "Not found"
+          }
+        }
+      },
+      "Order": {
+        "type": "object",
+        "required": [
+          "id",
+          "customerName",
+          "customerPhone",
+          "customerEmail",
+          "quantity"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "customerName": {
+            "type": "string",
+            "example": "Ann Smith"
+          },
+          "customerPhone": {
+            "type": "string",
+            "example": "+1 (555) 123-4567"
+          },
+          "customerEmail": {
+            "type": "string",
+            "format": "email",
+            "example": "ann@example.com"
+          },
+          "customerMessage": {
+            "type": "string",
+            "nullable": true,
+            "example": "Please deliver in the morning"
+          },
+          "bouquetTitle": {
+            "type": "string",
+            "nullable": true,
+            "example": "Peach Meadow"
+          },
+          "bouquetPrice": {
+            "type": "number",
+            "format": "float",
+            "nullable": true,
+            "example": 55
+          },
+          "quantity": {
+            "type": "integer",
+            "example": 1
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "OrderCreate": {
+        "type": "object",
+        "required": [
+          "customerName",
+          "customerPhone",
+          "customerEmail"
+        ],
+        "properties": {
+          "customerName": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100
+          },
+          "customerPhone": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 30
+          },
+          "customerEmail": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 150
+          },
+          "customerMessage": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 1000
+          },
+          "bouquetTitle": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 100
+          },
+          "bouquetPrice": {
+            "type": "number",
+            "format": "float",
+            "nullable": true,
+            "minimum": 0
+          },
+          "quantity": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 99,
+            "default": 1
+          }
+        }
+      },
+      "Feedback": {
+        "type": "object",
+        "required": [
+          "id",
+          "author",
+          "text"
+        ],
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 1
+          },
+          "author": {
+            "type": "string",
+            "example": "Emma T."
+          },
+          "text": {
+            "type": "string",
+            "example": "Flora made my anniversary unforgettable!"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "FeedbackCreate": {
+        "type": "object",
+        "required": [
+          "author",
+          "text"
+        ],
+        "properties": {
+          "author": {
+            "type": "string",
+            "minLength": 2,
+            "maxLength": 100
+          },
+          "text": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 1000
+          }
         }
       }
     },
@@ -279,7 +779,9 @@
         "description": "Bad request",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/Error" }
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            }
           }
         }
       },
@@ -287,8 +789,12 @@
         "description": "Not found",
         "content": {
           "application/json": {
-            "schema": { "$ref": "#/components/schemas/Error" },
-            "example": { "message": "Not found" }
+            "schema": {
+              "$ref": "#/components/schemas/Error"
+            },
+            "example": {
+              "message": "Not found"
+            }
           }
         }
       }

@@ -1,8 +1,8 @@
 import cors from 'cors';
 import express from 'express';
 import path from 'node:path';
-import swaggerUi from 'swagger-ui-express';
 import { createRequire } from 'node:module';
+import swaggerUi from 'swagger-ui-express';
 
 import { env } from './config/env.js';
 import { apiRouter } from './routes/index.js';
